@@ -1,0 +1,259 @@
+﻿@model LMS.ViewModels.BookInventoryViewModel
+@{
+    ViewData["Title"] = "Book Inventory";
+    int i = 0;
+}
+<div id="bookinventory" class="container-fluid">
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h3>Book Details</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img id="imgview" src="~/lib/resources/imgs/books.png" height="225" width="150" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col form-group">
+                                <asp:FileUpload onChange="readURL(this);" class="form-control" ID="image_uploader" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <label>ISBN-13</label>&nbsp<span asp-validation-for="add_book.book_id" class="text-danger"></span>
+                                <div class="form-group input-group">
+                                    <input class="form-control" ID="isbn_input" asp-for="add_book.book_id"/>
+                                    <div class="input-group-append">
+                                        <a class="btn btn-primary" ID="findbook_btn" ><i class="fas fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <label>Book Name</label>&nbsp<span asp-validation-for="add_book.book_name" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="bookname_input" asp-for="add_book.book_name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-7">
+                                <label>Language</label>&nbsp<span asp-validation-for="add_book.language" class="text-danger"></span>
+                                <div class="form-group">
+                                    <select class="form-control col-12" asp-for="add_book.language" asp-items="Model.language_list"></select>
+                                </div>
+                                <label>Author Name</label>&nbsp<span asp-validation-for="add_book.author_name" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="authorname_input" asp-for="add_book.author_name"/>
+                                </div>
+                            </div>
+
+                            <div class="col-5">
+                                <label>Genre</label>&nbsp<span asp-validation-for="add_book.genre" class="text-danger"></span>
+                                <div class="form-group">
+                                    <select class="form-control col-12" asp-for="add_book.genre" asp-items="Model.genre_list" multiple></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Publisher Name</label>&nbsp<span asp-validation-for="add_book.publisher_name" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="publishername_input" asp-for="add_book.publisher_name"/>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label>Publish Date</label>&nbsp<span asp-validation-for="add_book.publish_date" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="publishdate_input" type="date" asp-for="add_book.publish_date" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Edition</label>&nbsp<span asp-validation-for="add_book.edition" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="edition_input" asp-for="add_book.edition" />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Cost (per unit)</label>&nbsp<span asp-validation-for="add_book.book_cost" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="cost_input" TextMode="Number" step="0.01" asp-for="add_book.book_cost" />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Pages</label>&nbsp<span asp-validation-for="add_book.no_of_pages" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="pages_input" TextMode="Number" asp-for="add_book.no_of_pages" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Actual Stock</label>&nbsp<span asp-validation-for="add_book.actual_stock" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="actualstock_input" TextMode="Number" asp-for="add_book.actual_stock" />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Current Stock</label>
+                                <div class="form-group">
+                                    <input class="form-control" ID="currentstock_show" TextMode="Number" readonly />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Issued Books</label>
+                                <div class="form-group">
+                                    <input class="form-control" ID="issuedbook_show" TextMode="Number" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label>Book Description</label>&nbsp<span asp-validation-for="add_book.book_description" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input class="form-control" ID="description_input" TextMode="MultiLine" Rows="3" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <button ID="addbtn" class="btn btn-block btn-success">Add</button>
+                            </div>
+                            <div class="col-4">
+                                <button ID="updatebtn" class="btn btn-block btn-warning">Update</button>
+                            </div>
+                            <div class="col-4">
+                                <button ID="deletebtn" class="btn btn-block btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 mt-3 mt-lg-0 mt-xl-0">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h3>Book Inventory List</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="~/lib/resources/imgs/library.png" width="150" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <hr>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                @{
+                                    if (Model != null)
+                                    {
+                                        foreach (var Data in Model.book_list)
+                                        {
+                                            <div class="container-fluid">
+                                                <div class="row border">
+                                                    <div class="col-1">
+                                                        @(++i)
+                                                    </div>
+                                                    <div class="col-11 col-md-9 col-lg-9 col-xl-9">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                @Data.book_name
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                ISBN-13 - @Data.book_id
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Author - @Data.author_name
+                                                                &nbsp;| Genre - @Data.genre
+                                                                &nbsp;| Language - @Data.language
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Publisher - @Data.publisher_name
+                                                                &nbsp;| Publish Date - @Data.publish_date
+                                                                &nbsp;| Pages - @Data.no_of_pages
+                                                                &nbsp;| Edition - @Data.edition
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Cost - @Data.book_cost
+                                                                &nbsp;| Actual Stock - @Data.actual_stock
+                                                                &nbsp;| Issued - @Data.issued_books
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Description - @Data.book_description
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                                                        <img class="img img-fluid p-1" src="@Url.Content(Data.book_img)" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgview').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

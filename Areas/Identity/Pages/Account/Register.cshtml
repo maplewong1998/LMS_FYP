@@ -1,0 +1,137 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<div id="userregistration" class="container">
+    <section id="loginform" class="row mt-4">
+        <div class="col-md-12 mx-auto">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img src="~/lib/resources/imgs/sign-up.png" width="150" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12  d-flex justify-content-center mt-2">
+                            <h3>Sign Up</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-6">
+                                Full Name&nbsp<span asp-validation-for="Input.full_name" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.full_name" class="form-control" id="name_input" type="text" />
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                Date of Birth&nbsp<span asp-validation-for="Input.dob" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.dob" class="form-control" id="birthdate_input" type="date" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Contact Number&nbsp<span asp-validation-for="Input.contact_no" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.contact_no" class="form-control" id="phone_input" type="tel" />
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                Email Address&nbsp<span asp-validation-for="Input.Email" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.Email" class="form-control" id="email_input" type="email" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                Street&nbsp<span asp-validation-for="Input.street" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.street" class="form-control" id="street_input" type="text" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                State&nbsp<span asp-validation-for="Input.state" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.state" class="form-control" id="state_input" type="text" />
+
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                City&nbsp<span asp-validation-for="Input.city" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.city" class="form-control" id="city_input" type="text" />
+
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                Postcode&nbsp<span asp-validation-for="Input.postcode" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.postcode" class="form-control" id="postnumber_input" type="text" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h5>Login Credentials</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Password&nbsp<span asp-validation-for="Input.Password" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.Password" class="form-control" id="password_input_registration" type="password" />
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                Confirm Password&nbsp<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" id="password_input_confirm_registration" type="password" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 form-group mx-auto">
+                                <button type="submit" class="btn btn-block btn-primary" id="sign_up_btn">Sign Up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

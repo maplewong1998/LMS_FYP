@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LMS.Areas.Identity.Models
+
+@inject SignInManager<AppUserModel> SignInManager
+@inject UserManager<AppUserModel> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @if (this.User.IsInRole("Admin"))
+        {
+            <li class="nav-item active dropdown">
+                <button style="font-size:14px; font-weight:600" class="btn btn-link nav-link dropdown-toggle px-1 py-0 mx-1 text-dark" data-toggle="dropdown" href="#">Hello @UserManager.GetUserName(User)</button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="UserProfile">Profile</a></li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="MemberManagement">Member Management</a></li>
+                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="BookInventory">Book Inventory</a></li>
+                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="BookIssuing">Book Issuing</a></li>
+                    <li><a class="dropdown-item" href="#">Comment Review</a></li>
+                </ul>
+            </li>
+        }
+        @if (this.User.IsInRole("Member"))
+        {
+            <li class="nav-item active dropdown">
+                <button style="font-size:14px; font-weight:600" class="btn btn-link nav-link dropdown-toggle px-1 py-0 mx-1 text-dark" data-toggle="dropdown" href="#">Hello @UserManager.GetUserName(User)</button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="UserProfile">Profile</a></li>
+                </ul>
+            </li>
+        }
+        <li class="nav-item">
+            <form method="post" asp-area="Identity" asp-controller="Account" asp-action="Logout">
+                <button style="font-size:14px; font-weight:600" id="logout" class="btn btn-link nav-link px-1 py-0 mx-1 text-dark" type="submit"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-link nav-link px-1 py-0 mx-1 text-dark" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-user-plus"></i> Create an account</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-link nav-link px-1 py-0 mx-1 text-dark" asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+        </li>
+    }
+</ul>

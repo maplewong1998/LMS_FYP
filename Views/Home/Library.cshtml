@@ -1,0 +1,97 @@
+﻿@model LMS.ViewModels.LibraryViewModel
+@{
+    ViewData["Title"] = "Library";
+    int i = 0;
+}
+
+<div id="library" class="container-fluid">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h3>Library</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="~/lib/resources/imgs/library.png" width="150" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                @{
+                                    if (Model != null)
+                                    {
+                                        foreach (var Data in Model.book_list)
+                                        {
+                                            <div class="container-fluid">
+                                                <div class="row border">
+                                                    <div class="col-1">
+                                                        @(++i)
+                                                    </div>
+                                                    <div class="col-11 col-md-9 col-lg-9 col-xl-9">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                @Data.book_name
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                ISBN-13 - @Data.book_id
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Author - @Data.author_name
+                                                                &nbsp;| Genre - @Data.genre
+                                                                &nbsp;| Language - @Data.language
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Publisher - @Data.publisher_name
+                                                                &nbsp;| Publish Date - @Data.publish_date
+                                                                &nbsp;| Pages - @Data.no_of_pages
+                                                                &nbsp;| Edition - @Data.edition
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Cost - @Data.book_cost
+                                                                &nbsp;| Actual Stock - @Data.actual_stock
+                                                                &nbsp;| Issued - @Data.issued_books
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                Description - @Data.book_description
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                                                        <img class="img img-fluid p-1" src="@Url.Content(Data.book_img)" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

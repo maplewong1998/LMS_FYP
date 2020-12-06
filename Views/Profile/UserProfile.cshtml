@@ -1,0 +1,232 @@
+﻿@model LMS.ViewModels.UserProfileViewModel
+@{
+    ViewData["Title"] = "User Profile";
+    int i = 0;
+}
+<div id="userprofile" class="container-fluid">
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="~/lib/resources/imgs/generaluser.png" width="150" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h3>User Profile</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <span>Account Status -</span>&nbsp<label class="badge badge-pill badge-info" ID="account_status">
+                                    @if (Model.user != null) 
+                                    { 
+                                        @Model.user.account_status
+                                    }
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <hr>
+                            </div>
+                        </div>
+
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-6">
+                                    Full Name
+                                    <div class="form-group">
+                                        <input asp-for="user.full_name" class="form-control" id="name_input" type="text" readonly />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    Date of Birth
+                                    <div class="form-group">
+                                        <input asp-for="user.dob" class="form-control" id="birthdate_input" type="date" readonly />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    Contact Number&nbsp<span asp-validation-for="user.PhoneNumber" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <input asp-for="user.PhoneNumber" class="form-control" id="phone_input" type="tel" />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    Email Address
+                                    <div class="form-group">
+                                        <input asp-for="user.Email" class="form-control" id="email_input" type="email" readonly />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    Street&nbsp<span asp-validation-for="user.street" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <input asp-for="user.street" class="form-control" id="street_input" type="text" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    State&nbsp<span asp-validation-for="user.state" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <input asp-for="user.state" class="form-control" id="state_input" type="text" />
+
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    City&nbsp<span asp-validation-for="user.city" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <input asp-for="user.city" class="form-control" id="city_input" type="text" />
+
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    Postcode&nbsp<span asp-validation-for="user.postcode" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <input asp-for="user.postcode" class="form-control" id="postnumber_input" type="text" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <h5>Login Credentials</h5>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    Change Password&nbsp<span asp-validation-for="ChangePassword" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <input asp-for="ChangePassword" class="form-control" id="password_input_registration" type="password" />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    Confirm Change&nbsp<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <input asp-for="ConfirmPassword" class="form-control" id="password_input_confirm_registration" type="password" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 form-group mx-auto">
+                                    <button class="btn btn-block btn-primary" ID="update_profile_btn">Update</button>
+                                </div>
+                            </div>
+                        </form>                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-3 mt-lg-0 mt-xl-0">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="~/lib/resources/imgs/digital-data.png" width="100" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h3>Borrow History</h3><br />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                No.
+                                            </th>
+                                            <th>
+                                                Issue ID
+                                            </th>
+                                            <th>
+                                                Book ID
+                                            </th>
+                                            <th>
+                                                Issue Date
+                                            </th>
+                                            <th>
+                                                Due Date
+                                            </th>
+                                            <th>
+                                                Issue Status
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model != null)
+                                        {
+                                            foreach (var Data in Model.issued_books)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @(++i)
+                                                    </td>
+                                                    <td>
+                                                        @Data.issue_id
+                                                    </td>
+                                                    <td>
+                                                        @Data.book_id
+                                                    </td>
+                                                    <td>
+                                                        @Data.issue_date
+                                                    </td>
+                                                    <td>
+                                                        @Data.due_date
+                                                    </td>
+                                                    <td>
+                                                        @Data.issue_status
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        });
+</script>

@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/custom/css/style.css" rel="stylesheet" />
+    <link href="~/lib/owl/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/lib/owl/css/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" />
+
+    <script src="~/lib/bootstrap/js/jquery-3.5.1.js"></script>
+    <script src="~/lib/bootstrap/js/popper.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/owl/js/owl.carousel.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+
+    <title>E-library</title>
+
+</head>
+
+<body>
+    <header>
+        <div id="topHeader">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand">
+                    <ul class="navbar-nav">
+                        <partial name="_LoginPartial.cshtml" />
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="bottomHeader">
+            <div class="container-fluid">
+                <nav class="navbar navbar-dark navbar-expand-md">
+                    <!-- brand logo-->
+                    <a class="navbar-brand" asp-controller="Home" asp-action="HomePage">
+                        <div class="row">
+                            <div class="col-3">
+                                <img id="web_logo" src="~/lib/resources/imgs/books.png" width="40" height="40" alt="#">
+                            </div>
+                            <div class="col-9 text-left">
+                                <p>E-bookstore</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- menu -->
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Home" asp-action="HomePage">Home</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Home" asp-action="Library">Library</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!---- Main Content Placeholder ---->
+    @RenderBody()
+    <!---- Main Content Placeholder ---->
+
+    <footer id="fullFooter" class="mt-4">
+        <div id="topFooter" class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 p-1">
+                    <h5>Library</h5>
+                    <a class="btn btn-link p-0 text-white">English Books</a>
+                    <a class="btn btn-link p-0 text-white">Malay Books</a>
+                    <a class="btn btn-link p-0 text-white">Chinese Books</a>
+                </div>
+                <div class="col-md-4 col-sm-12 p-1">
+                    <h5>About Us</h5>
+                    <p style="color: white;">This dynamic website is developed with Bootstrap, Owl, FontAwesome, DataTables, ASP.NET and Microsoft SQL Server.</p>
+                </div>
+                <div class="col-md-4 col-sm-12 p-1">
+                    <h5>Contact Us</h5>
+                    <h6 class="text-white">Wong Ting Sen</h6>
+                    <a class="btn btn-link p-0 text-white" id="footer_btn_4" href="tel: +(60) 183231959"><i class="fas fa-phone"></i> +(60) 183231959</a><br />
+                    <a class="btn btn-link p-0 text-white" id="footer_btn_5" href="mailto: maplewong1998@gmail.com"><i class="fas fa-envelope"></i> maplewong1998@gmail.com</a>
+                    <div class="embed-responsive embed-responsive-16by9 p-1">
+                        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15939.77635002619!2d101.69822023425913!3d2.8324250669885664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdc77dffa92899%3A0x25b5e828613a7db9!2sXiamen%20University%20Malaysia!5e0!3m2!1sen!2smy!4v1592747027802!5m2!1sen!2smy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 p-1">
+                    <h5>Follow Us On</h5>
+                    <a style="color: silver;" class="p-1" href="#"><i class="fab fa-2x fa-facebook-square"></i></a>
+                    <a style="color: silver;" class="p-1" href="#"><i class="fab fa-2x fa-google-plus-square"></i></a>
+                    <a style="color: silver;" class="p-1" href="#"><i class="fab fa-2x fa-twitter-square"></i></a>
+                    <a style="color: silver;" class="p-1" href="#"><i class="fab fa-2x fa-instagram-square"></i></a>
+                </div>
+                <div class="col-md-4 col-sm-12 p-1">
+                    <h5>Payment Methods</h5>
+                    <img class="img-fluid" src="~/lib/resources/imgs/payment-methods.jpg" alt="">
+                </div>
+                <div class="col-md-4 col-sm-12 p-1">
+                    <h5>Courier Partners</h5>
+                    <img class="img-fluid" src="~/lib/resources/imgs/courier-partners.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="bottomFooter" class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <p style="color:black">&copy All right Reversed. <a class="footerlinks" href="http://www.xmu.edu.my/" target="_blank">XMUM</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
