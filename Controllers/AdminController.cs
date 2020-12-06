@@ -18,9 +18,6 @@ namespace LMS.Controllers
         private readonly ILogger<AdminController> _logger;
         private readonly DatabaseContext _db;
         private readonly AuthContext _authdb;
-        private BookInventoryViewModel bookInventoryViewModel = new BookInventoryViewModel();
-        private MemberManagementViewModel memberManagementViewModel = new MemberManagementViewModel();
-        private BookIssuingViewModel bookIssuingViewModel = new BookIssuingViewModel();
 
         public AdminController(ILogger<AdminController> logger, DatabaseContext db, AuthContext authdb)
         {
@@ -29,21 +26,21 @@ namespace LMS.Controllers
             _authdb = authdb;
         }
 
-        public async Task<IActionResult> BookInventory()
+        public async Task<IActionResult> BookInventory(BookInventoryViewModel bookInventoryViewModel)
         {
             bookInventoryViewModel.book_list = await _db.book.ToListAsync();
 
             return View(bookInventoryViewModel);
         }
 
-        public async Task<IActionResult> MemberManagement()
+        public async Task<IActionResult> MemberManagement(MemberManagementViewModel memberManagementViewModel)
         {
             memberManagementViewModel.user_list = await _authdb.Users.ToListAsync();
 
             return View(memberManagementViewModel);
         }
 
-        public async Task<IActionResult> BookIssuing()
+        public async Task<IActionResult> BookIssuing(BookIssuingViewModel bookIssuingViewModel)
         {
             bookIssuingViewModel.issue_list = await _db.book_issue.ToListAsync();
 

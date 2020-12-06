@@ -19,7 +19,6 @@ namespace LMS.Controllers
         private readonly DatabaseContext _db;
         private readonly AuthContext _authdb;
         private readonly UserManager<AppUserModel> _user;
-        private UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
 
         public ProfileController(ILogger<ProfileController> logger, UserManager<AppUserModel> user, DatabaseContext db, AuthContext authdb)
         {
@@ -29,7 +28,28 @@ namespace LMS.Controllers
             _authdb = authdb;
         }
 
-        public async Task<IActionResult> UserProfile()
+        [HttpPost]
+        public async Task<ActionResult> UpdateProfile(UserProfileViewModel userProfileViewModel)
+        {
+            String userid = _user.GetUserId(HttpContext.User);
+
+            var user = _user.FindByIdAsync(userid).Result;
+            user.PhoneNumber = userProfileViewModel.user.PhoneNumber;
+            user.street = userProfileViewModel.user.street;
+            user.state = userProfileViewModel.user.state;
+            user.city = userProfileViewModel.user.city;
+            user.postcode = userProfileViewModel.user.postcode;
+
+            IdentityResult result = await _user.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("HomePage", "Home");
+            }
+            return View(userProfileViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UserProfile(UserProfileViewModel userProfileViewModel)
         {
             String username = User.FindFirstValue(ClaimTypes.Name);
             String userid = _user.GetUserId(HttpContext.User);

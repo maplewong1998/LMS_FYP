@@ -17,7 +17,6 @@ namespace LMS.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly DatabaseContext _db;
-        private LibraryViewModel libraryViewModel = new LibraryViewModel();
 
         public HomeController(ILogger<HomeController> logger, DatabaseContext db)
         {
@@ -40,7 +39,7 @@ namespace LMS.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Library()
+        public async Task<IActionResult> Library(LibraryViewModel libraryViewModel)
         {
             libraryViewModel.book_list = await _db.book.ToListAsync();
             return View(libraryViewModel);
