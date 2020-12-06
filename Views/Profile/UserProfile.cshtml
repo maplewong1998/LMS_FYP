@@ -24,11 +24,13 @@
 
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <span>Account Status -</span>&nbsp<label class="badge badge-pill badge-info" ID="account_status">
+                                <span>Account Status -</span>&nbsp
+                                <label class="badge badge-pill badge-info" ID="account_status">
                                     @if (Model.user != null) 
                                     { 
                                         @Model.user.account_status
                                     }
+                                </label>
                             </div>
                         </div>
 
