@@ -12,23 +12,23 @@ namespace LMS.Areas.Identity.Models
     {
         [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
-        public String full_name { get; set; }
+        public string full_name { get; set; }
 
         [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
-        public String dob { get; set; }
+        public string dob { get; set; }
 
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
-        public String street { get; set; }
+        public string street { get; set; }
 
         [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
-        public String state { get; set; }
+        public string state { get; set; }
 
         [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
-        public String city { get; set; }
+        public string city { get; set; }
 
         [PersonalData]
         [Column(TypeName = "int")]
@@ -36,6 +36,6 @@ namespace LMS.Areas.Identity.Models
 
         [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
-        public String account_status { get; set; }
+        public string account_status { get; set; }
     }
 }

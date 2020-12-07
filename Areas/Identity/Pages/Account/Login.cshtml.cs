@@ -36,30 +36,30 @@ namespace LMS.Areas.Identity.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        public String ReturnUrl { get; set; }
+        public string ReturnUrl { get; set; }
 
         [TempData]
-        public String ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
 
         public class InputModel
         {
             [Required]
             [EmailAddress]
-            public String Email { get; set; }
+            public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
-            public String Password { get; set; }
+            public string Password { get; set; }
 
             [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
 
-        public async Task OnGetAsync(String returnUrl = null)
+        public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!String.IsNullOrEmpty(ErrorMessage))
+            if (!string.IsNullOrEmpty(ErrorMessage))
             {
-                ModelState.AddModelError(String.Empty, ErrorMessage);
+                ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -72,7 +72,7 @@ namespace LMS.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(String returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 

@@ -29,7 +29,7 @@ namespace LMS.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdateProfile(UserProfileViewModel userProfileViewModel)
         {
-            String userid = _user.GetUserId(HttpContext.User);
+            string userid = _user.GetUserId(HttpContext.User);
 
             var user = _user.FindByIdAsync(userid).Result;
             user.PhoneNumber = userProfileViewModel.user.PhoneNumber;
@@ -49,8 +49,8 @@ namespace LMS.Controllers
         [HttpGet]
         public async Task<IActionResult> UserProfile(UserProfileViewModel userProfileViewModel)
         {
-            String username = User.FindFirstValue(ClaimTypes.Name);
-            String userid = _user.GetUserId(HttpContext.User);
+            string username = User.FindFirstValue(ClaimTypes.Name);
+            string userid = _user.GetUserId(HttpContext.User);
             userProfileViewModel.issued_books = await _db.book_issue.Where(b => b.member_id.Contains(username)).ToListAsync();
             userProfileViewModel.user = _user.FindByIdAsync(userid).Result;
             return View(userProfileViewModel);

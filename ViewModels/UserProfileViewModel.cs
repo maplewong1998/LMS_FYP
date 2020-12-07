@@ -16,10 +16,10 @@ namespace LMS.ViewModels
         [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public String ChangePassword { get; set; }
+        public string ChangePassword { get; set; }
 
         [DataType(DataType.Password)]
         [Compare("ChangePassword", ErrorMessage = "The password and confirmation password do not match.")]
-        public String ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

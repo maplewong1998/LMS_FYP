@@ -28,10 +28,10 @@
                             </div>
                         </div>
 
-                        <form method="post" asp-controller="Admin" asp-action="BookInventoryForm">
+                        <form method="post" asp-controller="BookInventory" asp-action="BookInventoryForm">
                             <div class="row">
                                 <div class="col form-group">
-                                    <input onchange="readURL(this);" type="file" class="form-control" ID="image_uploader" />
+                                    <input onchange="readURL(this);" type="file" class="form-control" ID="image_uploader" asp-for="add_book.book_img" />
                                 </div>
                             </div>
 
@@ -41,7 +41,7 @@
                                     <div class="form-group input-group">
                                         <input class="form-control" ID="isbn_input" asp-for="add_book.book_id" />
                                         <div class="input-group-append">
-                                            <button type="submit" name="submit" class="btn btn-primary" ID="findbook_btn"><i class="fas fa-search"></i></button>
+                                            <button type="submit" name="submit" value="search" class="btn btn-primary" ID="findbook_btn"><i class="fas fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>

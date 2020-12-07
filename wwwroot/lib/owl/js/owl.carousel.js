@@ -238,7 +238,7 @@
 	 * Enumeration for width.
 	 * @public
 	 * @readonly
-	 * @enum {String}
+	 * @enum {string}
 	 */
 	Owl.Width = {
 		Default: 'default',
@@ -250,7 +250,7 @@
 	 * Enumeration for types.
 	 * @public
 	 * @readonly
-	 * @enum {String}
+	 * @enum {string}
 	 */
 	Owl.Type = {
 		Event: 'event',
@@ -890,7 +890,7 @@
 	 * @todo Setting `freeDrag` makes `closest` not reusable. See #165.
 	 * @protected
 	 * @param {Number} coordinate - The coordinate in pixel.
-	 * @param {String} direction - The direction to check for the closest item. Ether `left` or `right`.
+	 * @param {string} direction - The direction to check for the closest item. Ether `left` or `right`.
 	 * @return {Number} - The absolute position of the closest item.
 	 */
 	Owl.prototype.closest = function(coordinate, direction) {
@@ -965,7 +965,7 @@
 
 	/**
 	 * Checks whether the carousel is in a specific state or not.
-	 * @param {String} state - The state to check.
+	 * @param {string} state - The state to check.
 	 * @returns {Boolean} - The flag which indicates if the carousel is busy.
 	 */
 	Owl.prototype.is = function(state) {
@@ -1008,8 +1008,8 @@
 
 	/**
 	 * Invalidates the given part of the update routine.
-	 * @param {String} [part] - The part to invalidate.
-	 * @returns {Array.<String>} - The invalidated parts.
+	 * @param {string} [part] - The part to invalidate.
+	 * @returns {Array.<string>} - The invalidated parts.
 	 */
 	Owl.prototype.invalidate = function(part) {
 		if ($.type(part) === 'string') {
@@ -1342,7 +1342,7 @@
 	/**
 	 * Replaces the current content.
 	 * @public
-	 * @param {HTMLElement|jQuery|String} content - The new content.
+	 * @param {HTMLElement|jQuery|string} content - The new content.
 	 */
 	Owl.prototype.replace = function(content) {
 		this.$stage.empty();
@@ -1374,7 +1374,7 @@
 	 * Adds an item.
 	 * @todo Use `item` instead of `content` for the event arguments.
 	 * @public
-	 * @param {HTMLElement|jQuery|String} content - The item content to add.
+	 * @param {HTMLElement|jQuery|string} content - The item content to add.
 	 * @param {Number} [position] - The relative position at which to insert the item otherwise the item will be added to the end.
 	 */
 	Owl.prototype.add = function(content, position) {
@@ -1487,7 +1487,7 @@
 	 * Operators to calculate right-to-left and left-to-right.
 	 * @protected
 	 * @param {Number} [a] - The left side operand.
-	 * @param {String} [o] - The operator.
+	 * @param {string} [o] - The operator.
 	 * @param {Number} [b] - The right side operand.
 	 */
 	Owl.prototype.op = function(a, o, b) {
@@ -1510,7 +1510,7 @@
 	 * Attaches to an internal event.
 	 * @protected
 	 * @param {HTMLElement} element - The event source.
-	 * @param {String} event - The event name.
+	 * @param {string} event - The event name.
 	 * @param {Function} listener - The event handler to attach.
 	 * @param {Boolean} capture - Wether the event should be handled at the capturing phase or not.
 	 */
@@ -1526,7 +1526,7 @@
 	 * Detaches from an internal event.
 	 * @protected
 	 * @param {HTMLElement} element - The event source.
-	 * @param {String} event - The event name.
+	 * @param {string} event - The event name.
 	 * @param {Function} listener - The attached event handler to detach.
 	 * @param {Boolean} capture - Wether the attached event handler was registered as a capturing listener or not.
 	 */
@@ -1542,10 +1542,10 @@
 	 * Triggers a public event.
 	 * @todo Remove `status`, `relatedTarget` should be used instead.
 	 * @protected
-	 * @param {String} name - The event name.
+	 * @param {string} name - The event name.
 	 * @param {*} [data=null] - The event data.
-	 * @param {String} [namespace=carousel] - The event namespace.
-	 * @param {String} [state] - The state which is associated with the event.
+	 * @param {string} [namespace=carousel] - The event namespace.
+	 * @param {string} [state] - The state which is associated with the event.
 	 * @param {Boolean} [enter=false] - Indicates if the call enters the specified state or not.
 	 * @returns {Event} - The event arguments.
 	 */
@@ -1639,7 +1639,7 @@
 	/**
 	 * Suppresses events.
 	 * @protected
-	 * @param {Array.<String>} events - The events to suppress.
+	 * @param {Array.<string>} events - The events to suppress.
 	 */
 	Owl.prototype.suppress = function(events) {
 		$.each(events, $.proxy(function(index, event) {
@@ -1650,7 +1650,7 @@
 	/**
 	 * Releases suppressed events.
 	 * @protected
-	 * @param {Array.<String>} events - The events to release.
+	 * @param {Array.<string>} events - The events to release.
 	 */
 	Owl.prototype.release = function(events) {
 		$.each(events, $.proxy(function(index, event) {
@@ -1688,7 +1688,7 @@
 	/**
 	 * Determines if the input is a Number or something that can be coerced to a Number
 	 * @protected
-	 * @param {Number|String|Object|Array|Boolean|RegExp|Function|Symbol} - The input to be tested
+	 * @param {Number|string|Object|Array|Boolean|RegExp|Function|Symbol} - The input to be tested
 	 * @returns {Boolean} - An indication if the input is a Number or can be coerced to a Number
 	 */
 	Owl.prototype.isNumeric = function(number) {
@@ -2880,7 +2880,7 @@
 		/**
 		 * Markup for an indicator.
 		 * @protected
-		 * @type {Array.<String>}
+		 * @type {Array.<string>}
 		 */
 		this._templates = [];
 
@@ -3429,19 +3429,19 @@
 
 	if (tests.csstransitions()) {
 		/* jshint -W053 */
-		$.support.transition = new String(prefixed('transition'))
+		$.support.transition = new string(prefixed('transition'))
 		$.support.transition.end = events.transition.end[ $.support.transition ];
 	}
 
 	if (tests.cssanimations()) {
 		/* jshint -W053 */
-		$.support.animation = new String(prefixed('animation'))
+		$.support.animation = new string(prefixed('animation'))
 		$.support.animation.end = events.animation.end[ $.support.animation ];
 	}
 
 	if (tests.csstransforms()) {
 		/* jshint -W053 */
-		$.support.transform = new String(prefixed('transform'));
+		$.support.transform = new string(prefixed('transform'));
 		$.support.transform3d = tests.csstransforms3d();
 	}
 

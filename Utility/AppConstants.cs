@@ -7,7 +7,7 @@ namespace LMS.Utility
 {
     public class AppConstants
     {
-        public const String AdminEndUser = "Admin";
-        public const String MemberEndUser = "Member";
+        public const string AdminEndUser = "Admin";
+        public const string MemberEndUser = "Member";
     }
 }

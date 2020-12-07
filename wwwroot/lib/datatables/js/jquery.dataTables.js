@@ -437,7 +437,7 @@
 		
 		/**
 		 * Filter the input based on data
-		 *  @param {string} sInput String to filter the table on
+		 *  @param {string} sInput string to filter the table on
 		 *  @param {int|null} [iColumn] Column to limit filtering to
 		 *  @param {bool} [bRegex=false] Treat as regular expression or not
 		 *  @param {bool} [bSmart=true] Perform smart filtering or not
@@ -2556,7 +2556,7 @@
 	
 	/**
 	 * Split string on periods, taking into account escaped periods
-	 * @param  {string} str String to split
+	 * @param  {string} str string to split
 	 * @return {array} Split string
 	 */
 	function _fnSplitObjNotation( str )

@@ -22,8 +22,38 @@ namespace LMS.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> BookInventoryForm(BookInventoryViewModel bookInventoryViewModel)
+        public async Task<ActionResult> BookInventoryForm(BookInventoryViewModel bookInventoryViewModel, string submit)
         {
+            switch(submit)
+            {
+                case "search":
+                    bookInventoryViewModel.add_book = _db.book.Single(b => b.book_id.Contains(bookInventoryViewModel.add_book.book_id));
+                    break;
+
+                case "add":
+                    break;
+
+                case "update":
+                    var query = (from books in _db.book
+                                where books.book_id == bookInventoryViewModel.add_book.book_id
+                                select books).First();
+                    query.book_name = bookInventoryViewModel.add_book.book_name;
+                    query.language = bookInventoryViewModel.add_book.language;
+                    query.author_name = bookInventoryViewModel.add_book.author_name;
+                    query.publisher_name = bookInventoryViewModel.add_book.publisher_name;
+                    query.publish_date = bookInventoryViewModel.add_book.publish_date;
+                    query.edition = bookInventoryViewModel.add_book.edition;
+                    query.book_cost = bookInventoryViewModel.add_book.book_cost;
+                    query.actual_stock = bookInventoryViewModel.add_book.actual_stock;
+                    query.book_description = bookInventoryViewModel.add_book.book_description;
+
+                    await _db.SaveChangesAsync();
+
+                    break;
+
+                case "delete":
+                    break;
+            }
             return View(bookInventoryViewModel);
         }
 

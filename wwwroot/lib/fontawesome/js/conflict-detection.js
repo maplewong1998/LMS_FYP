@@ -395,7 +395,7 @@
         var length32 = input.length * 32;
 
         for (i = 0; i < length32; i += 8) {
-          output += String.fromCharCode(input[i >> 5] >>> i % 32 & 0xff);
+          output += string.fromCharCode(input[i >> 5] >>> i % 32 & 0xff);
         }
 
         return output;

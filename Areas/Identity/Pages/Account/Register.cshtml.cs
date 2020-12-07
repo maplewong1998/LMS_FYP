@@ -50,32 +50,32 @@ namespace LMS.Areas.Identity.Pages.Account
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Full Name")]
-            public String full_name { get; set; }
+            public string full_name { get; set; }
 
             [Required]
             [DataType(DataType.Date)]
             [Display(Name = "Birth Date")]
-            public String dob { get; set; }
+            public string dob { get; set; }
 
             [Required]
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "Contact Number")]
-            public String contact_no { get; set; }
+            public string contact_no { get; set; }
 
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Street")]
-            public String street { get; set; }
+            public string street { get; set; }
 
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "State")]
-            public String state { get; set; }
+            public string state { get; set; }
 
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "City")]
-            public String city { get; set; }
+            public string city { get; set; }
 
             [Required]
             [DataType(DataType.PostalCode)]
@@ -85,18 +85,18 @@ namespace LMS.Areas.Identity.Pages.Account
             [Required]
             [DataType(DataType.EmailAddress)]
             [Display(Name = "Email")]
-            public String Email { get; set; }
+            public string Email { get; set; }
 
             [Required]
             [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
-            public String Password { get; set; }
+            public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-            public String ConfirmPassword { get; set; }
+            public string ConfirmPassword { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
