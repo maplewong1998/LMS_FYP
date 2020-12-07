@@ -12,11 +12,11 @@
             <li class="nav-item active dropdown">
                 <button style="font-size:14px; font-weight:600" class="btn btn-link nav-link dropdown-toggle px-1 py-0 mx-1 text-dark" data-toggle="dropdown" href="#">Hello @UserManager.GetUserName(User)</button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="UserProfile">Profile</a></li>
+                    <li><a class="dropdown-item" asp-controller="UserProfile" asp-action="UserProfile">Profile</a></li>
                     <li><div class="dropdown-divider"></div></li>
-                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="MemberManagement">Member Management</a></li>
-                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="BookInventory">Book Inventory</a></li>
-                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="BookIssuing">Book Issuing</a></li>
+                    <li><a class="dropdown-item" asp-controller="MemberManagement" asp-action="MemberManagement">Member Management</a></li>
+                    <li><a class="dropdown-item" asp-controller="BookInventory" asp-action="BookInventory">Book Inventory</a></li>
+                    <li><a class="dropdown-item" asp-controller="BookIssuing" asp-action="BookIssuing">Book Issuing</a></li>
                     <li><a class="dropdown-item" href="#">Comment Review</a></li>
                 </ul>
             </li>
@@ -26,7 +26,7 @@
             <li class="nav-item active dropdown">
                 <button style="font-size:14px; font-weight:600" class="btn btn-link nav-link dropdown-toggle px-1 py-0 mx-1 text-dark" data-toggle="dropdown" href="#">Hello @UserManager.GetUserName(User)</button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="UserProfile">Profile</a></li>
+                    <li><a class="dropdown-item" asp-controller="UserProfile" asp-action="UserProfile">Profile</a></li>
                 </ul>
             </li>
         }

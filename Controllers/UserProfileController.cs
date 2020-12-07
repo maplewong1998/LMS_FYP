@@ -13,19 +13,17 @@ using System.Threading.Tasks;
 
 namespace LMS.Controllers
 {
-    public class ProfileController : Controller
+    public class UserProfileController : Controller
     {
-        private readonly ILogger<ProfileController> _logger;
+        private readonly ILogger<UserProfileController> _logger;
         private readonly DatabaseContext _db;
-        private readonly AuthContext _authdb;
         private readonly UserManager<AppUserModel> _user;
 
-        public ProfileController(ILogger<ProfileController> logger, UserManager<AppUserModel> user, DatabaseContext db, AuthContext authdb)
+        public UserProfileController(ILogger<UserProfileController> logger, UserManager<AppUserModel> user, DatabaseContext db)
         {
             _logger = logger;
             _user = user;
             _db = db;
-            _authdb = authdb;
         }
 
         [HttpPost]
