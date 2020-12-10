@@ -12,57 +12,73 @@ namespace LMS.Controllers
 {
     public class BookInventoryController : Controller
     {
-        private readonly ILogger<BookInventoryController> _logger;
         private readonly DatabaseContext _db;
 
-        public BookInventoryController(ILogger<BookInventoryController> logger, DatabaseContext db)
+        public BookInventoryController(DatabaseContext db)
         {
-            _logger = logger;
             _db = db;
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult> BookInventoryForm(BookInventoryViewModel bookInventoryViewModel, string submit)
         {
-            switch(submit)
+            bookInventoryViewModel.book_list = await _db.book.ToListAsync();
+            var query = _db.book.Single(b => b.id == bookInventoryViewModel.book_form.id);
+
+            switch (submit)
             {
                 case "search":
-                    bookInventoryViewModel.add_book = _db.book.Single(b => b.book_id.Contains(bookInventoryViewModel.add_book.book_id));
+                    bookInventoryViewModel.book_form = query;
+                    bookInventoryViewModel.current_stock = query.actual_stock - query.issued_books;
                     break;
 
                 case "add":
                     break;
 
                 case "update":
-                    var query = (from books in _db.book
-                                where books.book_id == bookInventoryViewModel.add_book.book_id
-                                select books).First();
-                    query.book_name = bookInventoryViewModel.add_book.book_name;
-                    query.language = bookInventoryViewModel.add_book.language;
-                    query.author_name = bookInventoryViewModel.add_book.author_name;
-                    query.publisher_name = bookInventoryViewModel.add_book.publisher_name;
-                    query.publish_date = bookInventoryViewModel.add_book.publish_date;
-                    query.edition = bookInventoryViewModel.add_book.edition;
-                    query.book_cost = bookInventoryViewModel.add_book.book_cost;
-                    query.actual_stock = bookInventoryViewModel.add_book.actual_stock;
-                    query.book_description = bookInventoryViewModel.add_book.book_description;
-
+                    query.book_name = bookInventoryViewModel.book_form.book_name;
+                    query.language = bookInventoryViewModel.book_form.language;
+                    query.genre = bookInventoryViewModel.book_form.genre;
+                    query.author_name = bookInventoryViewModel.book_form.author_name;
+                    query.publisher_name = bookInventoryViewModel.book_form.publisher_name;
+                    query.publish_date = bookInventoryViewModel.book_form.publish_date;
+                    query.edition = bookInventoryViewModel.book_form.edition;
+                    query.book_cost = bookInventoryViewModel.book_form.book_cost;
+                    query.no_of_pages = bookInventoryViewModel.book_form.no_of_pages;
+                    query.actual_stock = bookInventoryViewModel.book_form.actual_stock;
+                    query.book_description = bookInventoryViewModel.book_form.book_description;
                     await _db.SaveChangesAsync();
-
                     break;
 
                 case "delete":
+                    _db.Remove(query);
+                    await _db.SaveChangesAsync();
                     break;
             }
-            return View(bookInventoryViewModel);
+
+            return View("BookInventory", bookInventoryViewModel);
+        }*/
+
+        [HttpGet]
+        public async Task<IActionResult> BookInventory()
+        {
+            return View(await _db.book.ToListAsync());
         }
 
         [HttpGet]
-        public async Task<IActionResult> BookInventory(BookInventoryViewModel bookInventoryViewModel)
+        public async Task<IActionResult> BookInventory_Edit(int? id)
         {
-            bookInventoryViewModel.book_list = await _db.book.ToListAsync();
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            return View(bookInventoryViewModel);
+            var book = await _db.book.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
         }
     }
 }

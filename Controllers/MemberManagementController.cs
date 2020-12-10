@@ -13,12 +13,10 @@ namespace LMS.Controllers
 {
     public class MemberManagementController : Controller
     {
-        private readonly ILogger<MemberManagementController> _logger;
         private readonly AuthContext _authdb;
 
-        public MemberManagementController(ILogger<MemberManagementController> logger, AuthContext authdb)
+        public MemberManagementController(AuthContext authdb)
         {
-            _logger = logger;
             _authdb = authdb;
         }
 

@@ -39,17 +39,17 @@
 
                         <div class="row">
                             <div class="col-6 form-group input-group">
-                                <input class="form-control" ID="memberid_input" asp-for="user.Email" />
+                                <input class="form-control" id="memberid_input" asp-for="user.Email" />
                                 <div class="input-group-append">
                                     <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                             <div class="col-6 form-group input-group">
-                                <input class="form-control" ID="accounstatus_input" asp-for="user.account_status" readonly />
+                                <input class="form-control" id="accounstatus_input" asp-for="user.account_status" readonly />
                                 <div class="input-group-append">
-                                    <button class="btn btn-success" ID="active_btn"><i class="fas fa-check-circle"></i></button>
-                                    <button class="btn btn-warning" ID="pending_btn"><i class="far fa-pause-circle"></i></button>
-                                    <button class="btn btn-danger" ID="suspend_btn"><i class="fas fa-times-circle"></i></button>
+                                    <button class="btn btn-success" id="active_btn"><i class="fas fa-check-circle"></i></button>
+                                    <button class="btn btn-warning" id="pending_btn"><i class="far fa-pause-circle"></i></button>
+                                    <button class="btn btn-danger" id="suspend_btn"><i class="fas fa-times-circle"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -57,46 +57,46 @@
                         <div class="row">
                             <div class="col-12 form-group">
                                 <label>Full Name</label>
-                                <input class="form-control" ID="name_input" asp-for="user.full_name" readonly />
+                                <input class="form-control" id="name_input" asp-for="user.full_name" readonly />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-6 form-group">
                                 <label>Date of Birth</label>
-                                <input class="form-control" ID="birthdate_input" asp-for="user.dob" readonly />
+                                <input class="form-control" id="birthdate_input" asp-for="user.dob" readonly />
                             </div>
                             <div class="col-6 form-group">
                                 <label>Contact Number</label>
-                                <input class="form-control" ID="phone_input" asp-for="user.PhoneNumber" readonly />
+                                <input class="form-control" id="phone_input" asp-for="user.PhoneNumber" readonly />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-12 form-group">
                                 <label>Street</label>
-                                <input class="form-control" ID="address_input" asp-for="user.street" readonly />
+                                <input class="form-control" id="address_input" asp-for="user.street" readonly />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-4 form-group">
                                 <label>State</label>
-                                <input class="form-control" ID="state_input" asp-for="user.state" readonly />
+                                <input class="form-control" id="state_input" asp-for="user.state" readonly />
                             </div>
                             <div class="col-4 form-group">
                                 <label>City</label>
-                                <input class="form-control" ID="city_input" asp-for="user.city" readonly />
+                                <input class="form-control" id="city_input" asp-for="user.city" readonly />
                             </div>
                             <div class="col-4 form-group">
                                 <label>Post Number</label>
-                                <input class="form-control" ID="postnumber_input" asp-for="user.postcode" readonly />
+                                <input class="form-control" id="postnumber_input" asp-for="user.postcode" readonly />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-7 form-group mx-auto">
-                                <button class="btn btn-block btn-danger" ID="delete_user_btn">Delete User Permanently</button>
+                                <button class="btn btn-block btn-danger" id="delete_user_btn">Delete User Permanently</button>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <table class="table table-striped table-bordered" ID="member_list" >
+                                <table class="table table-striped table-bordered" id="member_list" >
                                     <thead>
                                         <tr>
                                             <th>

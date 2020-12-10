@@ -15,12 +15,10 @@ namespace LMS.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly DatabaseContext _db;
 
-        public HomeController(ILogger<HomeController> logger, DatabaseContext db)
+        public HomeController(DatabaseContext db)
         {
-            _logger = logger;
             _db = db;
         }
 
@@ -41,11 +39,10 @@ namespace LMS.Controllers
 
         public async Task<IActionResult> Library(LibraryViewModel libraryViewModel)
         {
-            libraryViewModel.book_list = await _db.book.ToListAsync();
-            return View(libraryViewModel);
+            return View(await _db.book.ToListAsync());
         }
 
-            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

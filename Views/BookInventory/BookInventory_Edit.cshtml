@@ -1,0 +1,176 @@
+﻿@model BookModel
+@{
+    ViewData["Title"] = "Book Details Editing";
+}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <h3>Edit Book Details</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img id="imgview" src="~/lib/resources/imgs/books.png" height="225" width="150" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <form asp-action="BookInventory_Edit" method="post">
+                        <div class="row">
+                            <div class="col form-group">
+                                <input asp-for="book_img" class="form-control" id="image_path" type="text" />
+                                <!--<input asp-for="book_img" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />-->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <label>ISBN-13</label>
+                                <div class="form-group input-group">
+                                    <input asp-for="isbn" class="form-control" id="isbn_input" type="text" />
+                                    <div class="input-group-append">
+                                        <button type="submit" name="submit" value="search" class="btn btn-primary" id="findbook_btn"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <label>Book Name</label>
+                                <div class="form-group">
+                                    <input asp-for="book_name" class="form-control" id="bookname_input" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-7">
+                                <label>Language</label>
+                                <div class="form-group">
+                                    <input asp-for="language" class="form-control" id="language_input" type="text" />
+                                </div>
+                            </div>
+
+                            <div class="col-5">
+                                <label>Genre</label>
+                                <div class="form-group">
+                                    <input asp-for="genre" class="form-control" id="genre_input" type="text" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label>Author Name</label>
+                                <div class="form-group">
+                                    <input asp-for="author_name" class="form-control" id="authorname_input" type="text" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Publisher Name</label>
+                                <div class="form-group">
+                                    <input asp-for="publisher_name" class="form-control" id="publishername_input" type="text" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label>Publish Date</label>
+                                <div class="form-group">
+                                    <input asp-for="publish_date" class="form-control" id="publishdate_input" type="date" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Edition</label>
+                                <div class="form-group">
+                                    <input asp-for="edition" class="form-control" id="edition_input" type="text" />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Cost (per unit)</label>
+                                <div class="form-group">
+                                    <input asp-for="book_cost" class="form-control" id="cost_input" step="0.01" type="number" />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Pages</label>
+                                <div class="form-group">
+                                    <input asp-for="no_of_pages" class="form-control" id="pages_input" type="number" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Actual Stock</label>
+                                <div class="form-group">
+                                    <input asp-for="actual_stock" class="form-control" id="actualstock_input" type="number" />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Current Stock</label>
+                                <div class="form-group">
+                                    <input class="form-control" id="currentstock_show" type="number" readonly />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label>Issued Books</label>
+                                <div class="form-group">
+                                    <input asp-for="issued_books" class="form-control" id="issuedbook_show" type="number" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label>Book Description</label>
+                                <div class="form-group">
+                                    <textarea asp-for="book_description" class="form-control" id="description_input" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="submit" name="submit" value="add" id="add_button" class="btn btn-block btn-success">Add</button>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" name="submit" value="update" id="update_button" class="btn btn-block btn-warning">Update</button>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" name="submit" value="delete" id="delete_button" class="btn btn-block btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgview').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

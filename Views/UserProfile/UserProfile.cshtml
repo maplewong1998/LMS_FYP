@@ -25,11 +25,8 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
                                 <span>Account Status -</span>&nbsp
-                                <label class="badge badge-pill badge-info" ID="account_status">
-                                    @if (Model.user != null) 
-                                    { 
-                                        @Model.user.account_status
-                                    }
+                                <label class="badge badge-pill badge-info" id="account_status">                                    
+                                    @Model.user.account_status
                                 </label>
                             </div>
                         </div>
@@ -46,7 +43,6 @@
                                     Full Name
                                     <div class="form-group">
                                         <input asp-for="user.full_name" class="form-control" id="name_input" type="text" readonly />
-
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -134,7 +130,7 @@
 
                             <div class="row">
                                 <div class="col-6 form-group mx-auto">
-                                    <button type="submit" class="btn btn-block btn-primary" ID="update_profile_btn">Update</button>
+                                    <button type="submit" class="btn btn-block btn-primary" id="update_profile_btn">Update</button>
                                 </div>
                             </div>
                         </form>                        
@@ -172,10 +168,10 @@
                                                 No.
                                             </th>
                                             <th>
-                                                Issue ID
+                                                Issue id
                                             </th>
                                             <th>
-                                                Book ID
+                                                Book id
                                             </th>
                                             <th>
                                                 Issue Date
@@ -198,10 +194,10 @@
                                                         @(++i)
                                                     </td>
                                                     <td>
-                                                        @Data.issue_id
+                                                        @Data.id
                                                     </td>
                                                     <td>
-                                                        @Data.book_id
+                                                        @Data.id
                                                     </td>
                                                     <td>
                                                         @Data.issue_date

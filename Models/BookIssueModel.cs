@@ -11,22 +11,16 @@ namespace LMS.Models
     {
         [Column(TypeName = "nvarchar(50)")]
         [Key]
-        [Required]
-        public string issue_id { get; set; }
+        public string id { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
-        public string member_id { get; set; }
+        public string member_email { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
-        public string book_id { get; set; }
+        public string book_isbn { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string issue_date { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string due_date { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string issue_status { get; set; }
     }
 }

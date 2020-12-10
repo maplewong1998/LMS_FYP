@@ -10,42 +10,32 @@ namespace LMS.Models
 {
     public class BookModel
     {
-        [Column(TypeName = "nvarchar(50)")]
+        [Column(TypeName = "int")]
         [Key]
-        [Required]
-        public string book_id { get; set; }
+        public int id { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
+        public string isbn { get; set; }
+        [Column(TypeName = "nvarchar(50)")]
         public string book_name { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string genre { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string author_name { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string publisher_name { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string publish_date { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string language { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        [Required]
         public string edition { get; set; }
         [Column(TypeName = "decimal(10, 2)")]
-        [Required]
         public decimal book_cost { get; set; }
         [Column(TypeName = "smallint")]
-        [Required]
         public Int16 no_of_pages { get; set; }
         [Column(TypeName = "nvarchar(MAX)")]
-        [Required]
         public string book_description { get; set; }
         [Column(TypeName = "int")]
-        [Required]
         public int actual_stock { get; set; }
         [Column(TypeName = "int")]
         public int issued_books { get; set; }

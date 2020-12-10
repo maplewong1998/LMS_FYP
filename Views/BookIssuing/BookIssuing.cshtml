@@ -30,9 +30,9 @@
 
                         <div class="row">
                             <div class="col-6">
-                                <label>Issue ID</label>&nbsp<span asp-validation-for="issue.issue_id" class="text-danger"></span>
+                                <label>Issue id</label>&nbsp<span asp-validation-for="issue.id" class="text-danger"></span>
                                 <div class="form-group input-group">
-                                    <input class="form-control" ID="issueid_input" />
+                                    <input class="form-control" id="issueid_input" />
                                     <div class="input-group-append">
                                         <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                     </div>
@@ -41,7 +41,7 @@
                             <div class="col-6">
                                 <label>Status</label>&nbsp<span asp-validation-for="issue.issue_status" class="text-danger"></span>
                                 <div class="form-group input-group">
-                                    <input class="form-control" ID="status" readonly />
+                                    <input class="form-control" id="status" readonly />
                                     <div class="input-group-append">
                                         <button class="btn btn-success"><i class="fas fa-check-circle"></i></button>
                                         <button class="btn btn-warning"><i class="far fa-pause-circle"></i></button>
@@ -53,15 +53,15 @@
 
                         <div class="row">
                             <div class="col-6">
-                                <label>Member ID</label>&nbsp<span asp-validation-for="issue.member_id" class="text-danger"></span>
+                                <label>Member id</label>&nbsp<span asp-validation-for="issue.member_email" class="text-danger"></span>
                                 <div class="form-group">
-                                    <input class="form-control" ID="member_id"  />
+                                    <input class="form-control" id="member_email"  />
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label>Book ID</label>&nbsp<span asp-validation-for="issue.book_id" class="text-danger"></span>
+                                <label>Book id</label>&nbsp<span asp-validation-for="issue.id" class="text-danger"></span>
                                 <div class="form-group">
-                                    <input class="form-control" ID="book_id"  />
+                                    <input class="form-control" id="id"  />
                                 </div>
                             </div>
                         </div>
@@ -70,13 +70,13 @@
                             <div class="col-6">
                                 <label>Member Name</label>
                                 <div class="form-group">
-                                    <input class="form-control" ID="member_name"  readonly />
+                                    <input class="form-control" id="member_name"  readonly />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <label>Book Name</label>
                                 <div class="form-group">
-                                    <input class="form-control" ID="book_name" readonly />
+                                    <input class="form-control" id="book_name" readonly />
                                 </div>
                             </div>
                         </div>
@@ -85,20 +85,20 @@
                             <div class="col-6">
                                 <label>Start Date</label>
                                 <div class="form-group">
-                                    <input class="form-control" ID="start_date" type="date" />
+                                    <input class="form-control" id="start_date" type="date" />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <label>End Date</label>
                                 <div class="form-group">
-                                    <input class="form-control" ID="end_date" type="date" />
+                                    <input class="form-control" id="end_date" type="date" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-6 mx-auto">
-                                <button class="btn btn-block btn-primary" ID="Issue">Issue</button>
+                                <button class="btn btn-block btn-primary" id="Issue">Issue</button>
                             </div>
                         </div>
 
@@ -131,13 +131,13 @@
                                                 No.
                                             </th>
                                             <th>
-                                                Issue ID
+                                                Issue id
                                             </th>
                                             <th>
                                                 Email
                                             </th>
                                             <th>
-                                                Book ID
+                                                Book id
                                             </th>
                                             <th>
                                                 Issue Date
@@ -160,13 +160,13 @@
                                                         @(++i)
                                                     </td>
                                                     <td>
-                                                        @Data.issue_id
+                                                        @Data.id
                                                     </td>
                                                     <td>
-                                                        @Data.member_id
+                                                        @Data.member_email
                                                     </td>
                                                     <td>
-                                                        @Data.book_id
+                                                        @Data.id
                                                     </td>
                                                     <td>
                                                         @Data.issue_date

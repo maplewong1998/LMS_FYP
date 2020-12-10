@@ -12,12 +12,10 @@ namespace LMS.Controllers
 {
     public class BookIssuingController : Controller
     {
-        private readonly ILogger<BookIssuingController> _logger;
         private readonly DatabaseContext _db;
 
-        public BookIssuingController(ILogger<BookIssuingController> logger, DatabaseContext db)
+        public BookIssuingController(DatabaseContext db)
         {
-            _logger = logger;
             _db = db;
         }
 
