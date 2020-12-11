@@ -27,7 +27,7 @@
                             </div>
                         </div>
 
-                        <form asp-action="BookInventory_Edit" method="post">
+                        <form asp-action="BookInventory_Create" method="post">
                             <div class="row">
                                 <div class="col form-group">
                                     <input asp-for="profilepic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
@@ -140,7 +140,7 @@
                                 <div class="col-4">
                                 </div>
                                 <div class="col-4">
-                                    <button type="submit" name="submit" value="update" id="update_button" class="btn btn-block btn-warning">Update</button>
+                                    <button type="submit" name="submit" value="add" id="add_button" class="btn btn-block btn-success">Add</button>
                                 </div>
                                 <div class="col-4">
                                 </div>

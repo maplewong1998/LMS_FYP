@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<BookModel>
 @{
     ViewData["Title"] = "Book Inventory";
+    int i = 0;
 }
 
 <div id="bookinventory" class="container-fluid">
@@ -26,7 +27,7 @@
                                 <hr>
                             </div>
                         </div>
-
+                        <a asp-action="BookInventory_Create">Create New</a>
                         <div class="row">
                             <div class="col">
                                 @{
@@ -37,9 +38,9 @@
                                             <div class="container-fluid">
                                                 <div class="row border">
                                                     <div class="col-1">
-                                                        @Data.id
+                                                        @(++i)
                                                     </div>
-                                                    <div class="col-10 col-md-8 col-lg-8 col-xl-8">
+                                                    <div class="col-10 col-md-9 col-lg-9 col-xl-9">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 @Data.book_name
@@ -47,7 +48,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-12">
-                                                                ISBN-13 - @Data.isbn
+                                                                ISBN-13 - @Data.id
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -77,13 +78,15 @@
                                                                 Description - @Data.book_description
                                                             </div>
                                                         </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <a asp-action="BookInventory_Edit" asp-route-id="@Data.id">Edit</a> | 
+                                                                <a href="#">Delete</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                                                         <img class="img img-fluid p-1" src="@Url.Content(Data.book_img)" />
-                                                    </div>
-                                                    <div class="col-1">
-                                                        <a asp-action="BookInventory_Edit" asp-route-id="@Data.id">Edit</a> |
-                                                        <a href="#" >Delete</a>
                                                     </div>
                                                 </div>
                                             </div>

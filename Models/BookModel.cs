@@ -10,11 +10,9 @@ namespace LMS.Models
 {
     public class BookModel
     {
-        [Column(TypeName = "int")]
-        [Key]
-        public int id { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        public string isbn { get; set; }
+        [Key]
+        public string id { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string book_name { get; set; }
         [Column(TypeName = "nvarchar(50)")]
