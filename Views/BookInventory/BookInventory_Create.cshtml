@@ -27,23 +27,23 @@
                             </div>
                         </div>
 
-                        <form asp-action="BookInventory_Create" method="post">
+                        <form asp-action="BookInventory_Create" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col form-group">
-                                    <input asp-for="profilepic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
+                                    <input asp-for="profile_pic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-4">
-                                    <label>ISBN-13</label>
+                                    <label>ISBN-13</label>&nbsp<span asp-validation-for="id" class="text-danger"></span>
                                     <div class="form-group">
                                         <input asp-for="id" class="form-control" id="isbn_input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-8">
-                                    <label>Book Name</label>
-                                    <div class="form-group">
+                                    <label>Book Name</label>&nbsp<span asp-validation-for="book_name" class="text-danger"></span>
+                                    <div class="form-group">                                        
                                         <input asp-for="book_name" class="form-control" id="bookname_input" type="text" />
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    <label>Actual Stock</label>
+                                    <label>Actual Stock</label>&nbsp<span asp-validation-for="actual_stock" class="text-danger"></span>
                                     <div class="form-group">
                                         <input asp-for="actual_stock" class="form-control" id="actualstock_input" type="number" />
                                     </div>

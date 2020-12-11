@@ -56,8 +56,8 @@ namespace LMS.Controllers
                     no_of_pages = book.no_of_pages,
                     book_description = book.book_description,
                     actual_stock = book.actual_stock,
-                    issued_books = book.issued_books,
-                    book_img = await UploadedFile(book.profilepic)
+                    issued_books = 0,
+                    book_img = UploadFile(book.profile_pic)
                 };
                 _db.Add(savebook);
                 await _db.SaveChangesAsync();
@@ -95,7 +95,7 @@ namespace LMS.Controllers
                 book_description = book.book_description,
                 actual_stock = book.actual_stock,
                 issued_books = book.issued_books,
-                profilepic = null
+                profile_pic = null
             };
 
             return View(pass);
@@ -115,7 +115,7 @@ namespace LMS.Controllers
                 try
                 {
                     BookModel savebook;
-                    if (book.profilepic != null)
+                    if (book.profile_pic != null)
                     {
                         savebook = new BookModel
                         {
@@ -131,8 +131,7 @@ namespace LMS.Controllers
                             no_of_pages = book.no_of_pages,
                             book_description = book.book_description,
                             actual_stock = book.actual_stock,
-                            issued_books = book.issued_books,
-                            book_img = await UploadedFile(book.profilepic)
+                            book_img = UploadFile(book.profile_pic)
                         };
                     }
                     else
@@ -151,7 +150,6 @@ namespace LMS.Controllers
                             no_of_pages = book.no_of_pages,
                             book_description = book.book_description,
                             actual_stock = book.actual_stock,
-                            issued_books = book.issued_books
                         };
                     }
                     
@@ -179,17 +177,24 @@ namespace LMS.Controllers
             return _db.book.Any(e => e.id == Id);
         }
 
-        private async Task<string> UploadedFile(IFormFile ifile)
+        private string UploadFile(IFormFile ifile)
         {
-            string saveimg = null;
-            string imgext = Path.GetExtension(ifile.FileName);
-            if(imgext == ".jpg" || imgext == ".gif")
+            string img_name = null;            
+            if (ifile != null)
             {
-                saveimg = Path.Combine(_webHostEnvironment.WebRootPath, "lib/resources/imgs", ifile.FileName);
-                var stream = new FileStream(saveimg, FileMode.Create);
-                await ifile.CopyToAsync(stream);
+                string imgext = Path.GetExtension(ifile.FileName);
+                if (imgext == ".jpg" || imgext == ".gif")
+                {
+                    string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "lib/resources/books");
+                    img_name = Guid.NewGuid().ToString() + "_" + ifile.FileName;
+                    string filePath = Path.Combine(uploadFolder, img_name);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        ifile.CopyTo(fileStream);
+                    }
+                }
             }
-            return saveimg;
+            return img_name;
         }
     }
 }

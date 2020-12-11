@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,10 @@ namespace LMS.Models
 {
     public class BookModelwProfileImage
     {
+        [Key]
+        [Required(ErrorMessage = "*This field is required")]
         public string id { get; set; }
+        [Required(ErrorMessage = "*This field is required")]
         public string book_name { get; set; }
         public string genre { get; set; }
         public string author_name { get; set; }
@@ -19,8 +23,9 @@ namespace LMS.Models
         public decimal book_cost { get; set; }
         public Int16 no_of_pages { get; set; }
         public string book_description { get; set; }
+        [Required(ErrorMessage = "*This field is required")]
         public int actual_stock { get; set; }
         public int issued_books { get; set; }
-        public IFormFile profilepic { get; set; }
+        public IFormFile profile_pic { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace LMS.Models
         [Column(TypeName = "nvarchar(50)")]
         public string member_email { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        public string book_isbn { get; set; }
+        public string book_id { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string issue_date { get; set; }
         [Column(TypeName = "nvarchar(50)")]

@@ -27,10 +27,10 @@
                             </div>
                         </div>
 
-                        <form asp-action="BookInventory_Edit" method="post">
+                        <form asp-action="BookInventory_Edit" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col form-group">
-                                    <input asp-for="profilepic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
+                                    <input asp-for="profile_pic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
                                 </div>
                             </div>
 
