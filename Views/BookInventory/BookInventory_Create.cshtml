@@ -1,4 +1,4 @@
-﻿@model BookModelwProfileImage
+﻿@model LMS.ViewModels.BookIventoryCE_ViewModel
 @{
     ViewData["Title"] = "Book Details Editing";
 }
@@ -30,7 +30,7 @@
                         <form asp-action="BookInventory_Create" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col form-group">
-                                    <input asp-for="profile_pic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
+                                    <input asp-for="book_pic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
                                 </div>
                             </div>
 

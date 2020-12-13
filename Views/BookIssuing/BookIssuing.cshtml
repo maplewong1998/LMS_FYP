@@ -1,112 +1,12 @@
-﻿@model LMS.ViewModels.BookIssuingViewModel
+﻿@model IEnumerable<BookIssueModel>
 @{
     ViewData["Title"] = "Book Issuing";
     int i = 0;
 }
 <div id="bookissuing" class="container-fluid">
-    <div class="container-fluid mt-4">
+    <div class="container mt-4">
         <div class="row">
-            <div class="col-lg-5">
-                <div class="card">
-                    <div class="card-body">
-
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-center">
-                                <h3>Book Issuing</h3>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-center">
-                                <img src="~/lib/resources/imgs/books.png" width="150" />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <hr>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6">
-                                <label>Issue id</label>&nbsp<span asp-validation-for="issue.id" class="text-danger"></span>
-                                <div class="form-group input-group">
-                                    <input class="form-control" id="issueid_input" />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label>Status</label>&nbsp<span asp-validation-for="issue.issue_status" class="text-danger"></span>
-                                <div class="form-group input-group">
-                                    <input class="form-control" id="status" readonly />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-success"><i class="fas fa-check-circle"></i></button>
-                                        <button class="btn btn-warning"><i class="far fa-pause-circle"></i></button>
-                                        <button class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6">
-                                <label>Member id</label>&nbsp<span asp-validation-for="issue.member_email" class="text-danger"></span>
-                                <div class="form-group">
-                                    <input class="form-control" id="member_email"  />
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label>Book id</label>&nbsp<span asp-validation-for="issue.id" class="text-danger"></span>
-                                <div class="form-group">
-                                    <input class="form-control" id="id"  />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6">
-                                <label>Member Name</label>
-                                <div class="form-group">
-                                    <input class="form-control" id="member_name"  readonly />
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label>Book Name</label>
-                                <div class="form-group">
-                                    <input class="form-control" id="book_name" readonly />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6">
-                                <label>Start Date</label>
-                                <div class="form-group">
-                                    <input class="form-control" id="start_date" type="date" />
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label>End Date</label>
-                                <div class="form-group">
-                                    <input class="form-control" id="end_date" type="date" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6 mx-auto">
-                                <button class="btn btn-block btn-primary" id="Issue">Issue</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-7 mt-3 mt-lg-0 mt-xl-0">
+            <div class="col">
                 <div class="card">
                     <div class="card-body">
 
@@ -148,12 +48,15 @@
                                             <th>
                                                 Issue Status
                                             </th>
+                                            <th>
+                                                Manage
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (Model != null)
                                         {
-                                            foreach (var Data in Model.issue_list)
+                                            foreach (var Data in Model)
                                             {
                                                 <tr>
                                                     <td>
@@ -176,6 +79,10 @@
                                                     </td>
                                                     <td>
                                                         @Data.issue_status
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="BookIssuing_Edit" asp-route-id="@Data.id">Edit</a><br />
+                                                        <a href="#">Delete</a>
                                                     </td>
                                                 </tr>
                                             }

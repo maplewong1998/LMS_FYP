@@ -1,4 +1,9 @@
-﻿@model IEnumerable<BookModel>
+﻿@using Microsoft.AspNetCore.Identity
+@using LMS.Areas.Identity.Models
+
+@model IEnumerable<BookModel>
+@inject SignInManager<AppUserModel> SignInManager
+
 @{
     ViewData["Title"] = "Library";
     int i = 0;
@@ -60,27 +65,25 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-12">
-                                                                Publisher - @Data.publisher_name
-                                                                &nbsp;| Publish Date - @Data.publish_date
-                                                                &nbsp;| Pages - @Data.no_of_pages
-                                                                &nbsp;| Edition - @Data.edition
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                Cost - @Data.book_cost
-                                                                &nbsp;| Actual Stock - @Data.actual_stock
-                                                                &nbsp;| Issued - @Data.issued_books
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-12">
                                                                 Description - @Data.book_description
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
                                                     <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-                                                        <img class="img img-fluid p-1" src="@Url.Content("~/lib/resources/books/" + Data.book_img)" />
+                                                        <row>
+                                                            <img class="img img-fluid p-1" src="@Url.Content("~/lib/resources/books/" + Data.book_img)" />
+                                                        </row>
+                                                        <row>
+                                                            @if (SignInManager.IsSignedIn(User))
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col text-center">
+                                                                        <a asp-action="Library_Borrow" asp-route-id="@Data.id">Borrow</a>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </row>                                                        
                                                     </div>
                                                 </div>
                                             </div>

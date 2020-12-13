@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LMS.Models
+namespace LMS.ViewModels
 {
-    public class BookModelwProfileImage
+    public class BookIventoryCE_ViewModel
     {
         [Key]
         [Required(ErrorMessage = "*This field is required")]
@@ -26,6 +26,7 @@ namespace LMS.Models
         [Required(ErrorMessage = "*This field is required")]
         public int actual_stock { get; set; }
         public int issued_books { get; set; }
-        public IFormFile profile_pic { get; set; }
+        public string book_img { get; set; }
+        public IFormFile book_pic { get; set; }
     }
 }

@@ -1,0 +1,112 @@
+﻿@model LMS.ViewModels.BookIssuingE_ViewModel
+@{
+    ViewData["Title"] = "Book Issuing Edit";
+    int i = 0;
+}
+<div id="bookinventory" class="container-fluid">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h3>Book Issuing</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="~/lib/resources/imgs/books.png" width="150" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <hr>
+                            </div>
+                        </div>
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Issue id</label>
+                                    <div class="form-group">
+                                        <input asp-for="id" class="form-control" id="issueid_input" readonly />                   </div>
+                                </div>
+                                <div class="col-6">
+                                    <label>Status</label>&nbsp<span asp-validation-for="issue_status" class="text-danger"></span>
+                                    <div class="form-group input-group">
+                                        <input asp-for="issue_status" class="form-control" id="issue_status" readonly />
+                                        <div class="input-group-append">
+                                            <button type="button" onclick="setValue('Active')" class="btn btn-success"><i class="fas fa-check-circle"></i></button>
+                                            <button type="button" onclick="setValue('Pending')" class="btn btn-warning"><i class="far fa-pause-circle"></i></button>
+                                            <button type="button" onclick="setValue('Returned')" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Member Email</label>
+                                    <div class="form-group">
+                                        <input asp-for="member_email" class="form-control" id="member_email" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label>Book ID</label>
+                                    <div class="form-group">
+                                        <input asp-for="book_id" class="form-control" id="book_id" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Member Name</label>
+                                    <div class="form-group">
+                                        <input asp-for="member_name" class="form-control" id="member_name" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label>Book Name</label>
+                                    <div class="form-group">
+                                        <input asp-for="book_name" class="form-control" id="book_name" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Start Date</label>
+                                    <div class="form-group">
+                                        <input asp-for="issue_date" class="form-control" id="start_date" type="date" />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label>End Date</label>
+                                    <div class="form-group">
+                                        <input asp-for="due_date" class="form-control" id="end_date" type="date" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 mx-auto">
+                                    <button type="submit" name="submit" value="update" class="btn btn-block btn-primary" id="Issue">Update</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function setValue(status) {
+        document.getElementById("issue_status").value = status;
+    }
+</script>

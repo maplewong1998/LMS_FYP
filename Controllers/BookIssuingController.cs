@@ -13,18 +13,47 @@ namespace LMS.Controllers
     public class BookIssuingController : Controller
     {
         private readonly DatabaseContext _db;
+        private readonly AuthContext _authdb;
 
-        public BookIssuingController(DatabaseContext db)
+        public BookIssuingController(DatabaseContext db, AuthContext authdb)
         {
             _db = db;
+            _authdb = authdb;
         }
 
         [HttpGet]
-        public async Task<IActionResult> BookIssuing(BookIssuingViewModel bookIssuingViewModel)
+        public async Task<IActionResult> BookIssuing(BookIssueModel bookIssueModel)
         {
-            bookIssuingViewModel.issue_list = await _db.book_issue.ToListAsync();
+            return View(await _db.book_issue.ToListAsync());
+        }
 
-            return View(bookIssuingViewModel);
+        [HttpGet]
+        public async Task<IActionResult> BookIssuing_Edit(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            BookIssueModel issue = await _db.book_issue.FindAsync(id);
+            if (issue == null)
+            {
+                return NotFound();
+            }
+
+            BookIssuingE_ViewModel pass = new BookIssuingE_ViewModel
+            {
+                id = issue.id,
+                member_email = issue.member_email,
+                book_id = issue.book_id,
+                issue_date = issue.issue_date,
+                due_date = issue.due_date,
+                issue_status = issue.issue_status,
+                member_name = _authdb.Users.Where(u => u.UserName == issue.member_email).Select(u => u.full_name).FirstOrDefault(),
+                book_name = _db.book.Where(b => b.id == issue.book_id).Select(b => b.book_name).FirstOrDefault()
+            };
+
+            return View(pass);
         }
     }
 }

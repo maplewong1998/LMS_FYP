@@ -11,7 +11,7 @@
 
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <h3>Edit Book Details</h3>
+                                <h3>Book Details</h3>
                             </div>
                         </div>
 
@@ -27,24 +27,18 @@
                             </div>
                         </div>
 
-                        <form asp-action="BookInventory_Edit" method="post" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col form-group">
-                                    <input asp-for="book_pic" onchange="readURL(this);" class="form-control" id="image_uploader" type="file" />
-                                </div>
-                            </div>
-
+                        <form asp-action="Library_Borrow" method="post">
                             <div class="row">
                                 <div class="col-4">
                                     <label>ISBN-13</label>
                                     <div class="form-group">
-                                        <input asp-for="id" class="form-control" id="isbn_input" type="text" />
+                                        <input asp-for="id" class="form-control" id="isbn_input" type="text" readonly />
                                     </div>
                                 </div>
                                 <div class="col-8">
                                     <label>Book Name</label>
                                     <div class="form-group">
-                                        <input asp-for="book_name" class="form-control" id="bookname_input" type="text" />
+                                        <input asp-for="book_name" class="form-control" id="bookname_input" type="text" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -52,14 +46,14 @@
                                 <div class="col-7">
                                     <label>Language</label>
                                     <div class="form-group">
-                                        <input asp-for="language" class="form-control" id="language_input" type="text" />
+                                        <input asp-for="language" class="form-control" id="language_input" type="text" readonly />
                                     </div>
                                 </div>
 
                                 <div class="col-5">
                                     <label>Genre</label>
                                     <div class="form-group">
-                                        <input asp-for="genre" class="form-control" id="genre_input" type="text" />
+                                        <input asp-for="genre" class="form-control" id="genre_input" type="text" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +62,7 @@
                                 <div class="col-12">
                                     <label>Author Name</label>
                                     <div class="form-group">
-                                        <input asp-for="author_name" class="form-control" id="authorname_input" type="text" />
+                                        <input asp-for="author_name" class="form-control" id="authorname_input" type="text" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -77,13 +71,13 @@
                                 <div class="col-6">
                                     <label>Publisher Name</label>
                                     <div class="form-group">
-                                        <input asp-for="publisher_name" class="form-control" id="publishername_input" type="text" />
+                                        <input asp-for="publisher_name" class="form-control" id="publishername_input" type="text" readonly />
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <label>Publish Date</label>
                                     <div class="form-group">
-                                        <input asp-for="publish_date" class="form-control" id="publishdate_input" type="date" />
+                                        <input asp-for="publish_date" class="form-control" id="publishdate_input" type="date" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -92,19 +86,19 @@
                                 <div class="col-4">
                                     <label>Edition</label>
                                     <div class="form-group">
-                                        <input asp-for="edition" class="form-control" id="edition_input" type="text" />
+                                        <input asp-for="edition" class="form-control" id="edition_input" type="text" readonly />
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <label>Cost (per unit)</label>
                                     <div class="form-group">
-                                        <input asp-for="book_cost" class="form-control" id="cost_input" step="0.01" type="number" />
+                                        <input asp-for="book_cost" class="form-control" id="cost_input" step="0.01" type="number" readonly />
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <label>Pages</label>
                                     <div class="form-group">
-                                        <input asp-for="no_of_pages" class="form-control" id="pages_input" type="number" />
+                                        <input asp-for="no_of_pages" class="form-control" id="pages_input" type="number" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +106,7 @@
                                 <div class="col-4">
                                     <label>Actual Stock</label>
                                     <div class="form-group">
-                                        <input asp-for="actual_stock" class="form-control" id="actualstock_input" type="number" />
+                                        <input asp-for="actual_stock" class="form-control" id="actualstock_input" type="number" readonly />
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -132,7 +126,7 @@
                                 <div class="col-12">
                                     <label>Book Description</label>
                                     <div class="form-group">
-                                        <textarea asp-for="book_description" class="form-control" id="description_input" rows="4"></textarea>
+                                        <textarea asp-for="book_description" class="form-control" id="description_input" rows="4" readonly ></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +134,7 @@
                                 <div class="col-4">
                                 </div>
                                 <div class="col-4">
-                                    <button type="submit" name="submit" value="update" id="update_button" class="btn btn-block btn-warning">Update</button>
+                                    <button type="submit" name="submit" value="borrow" id="borrow_btn" class="btn btn-block btn-primary">Borrow</button>
                                 </div>
                                 <div class="col-4">
                                 </div>

@@ -38,7 +38,7 @@ namespace LMS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> BookInventory_Create(BookModelwProfileImage book)
+        public async Task<IActionResult> BookInventory_Create(BookIventoryCE_ViewModel book)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace LMS.Controllers
                     book_description = book.book_description,
                     actual_stock = book.actual_stock,
                     issued_books = 0,
-                    book_img = UploadFile(book.profile_pic)
+                    book_img = UploadFile(book.book_pic)
                 };
                 _db.Add(savebook);
                 await _db.SaveChangesAsync();
@@ -80,7 +80,7 @@ namespace LMS.Controllers
                 return NotFound();
             }
 
-            BookModelwProfileImage pass = new BookModelwProfileImage
+            BookIventoryCE_ViewModel pass = new BookIventoryCE_ViewModel
             {
                 id = book.id,
                 book_name = book.book_name,
@@ -95,7 +95,8 @@ namespace LMS.Controllers
                 book_description = book.book_description,
                 actual_stock = book.actual_stock,
                 issued_books = book.issued_books,
-                profile_pic = null
+                book_img = book.book_img,
+                book_pic = null
             };
 
             return View(pass);
@@ -103,7 +104,7 @@ namespace LMS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> BookInventory_Edit(string id, BookModelwProfileImage book)
+        public async Task<IActionResult> BookInventory_Edit(string id, BookIventoryCE_ViewModel book)
         {
             if (id != book.id)
             {
@@ -115,7 +116,7 @@ namespace LMS.Controllers
                 try
                 {
                     BookModel savebook;
-                    if (book.profile_pic != null)
+                    if (book.book_pic != null)
                     {
                         savebook = new BookModel
                         {
@@ -131,7 +132,7 @@ namespace LMS.Controllers
                             no_of_pages = book.no_of_pages,
                             book_description = book.book_description,
                             actual_stock = book.actual_stock,
-                            book_img = UploadFile(book.profile_pic)
+                            book_img = UploadFile(book.book_pic)
                         };
                     }
                     else

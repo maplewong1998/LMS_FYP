@@ -27,17 +27,20 @@ namespace LMS.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdateProfile(UserProfileViewModel userProfileViewModel)
         {
-            string username = User.FindFirstValue(ClaimTypes.Name);
-            string userid = _user.GetUserId(HttpContext.User);
-            userProfileViewModel.issued_books = await _db.book_issue.Where(b => b.member_email.Contains(username)).ToListAsync();
-            var user = _user.FindByIdAsync(userid).Result;
-            user.PhoneNumber = userProfileViewModel.user.PhoneNumber;
-            user.street = userProfileViewModel.user.street;
-            user.state = userProfileViewModel.user.state;
-            user.city = userProfileViewModel.user.city;
-            user.postcode = userProfileViewModel.user.postcode;
+            if(ModelState.IsValid)
+            {
+                string username = User.FindFirstValue(ClaimTypes.Name);
+                string userid = _user.GetUserId(HttpContext.User);
+                userProfileViewModel.issued_books = await _db.book_issue.Where(b => b.member_email.Contains(username)).ToListAsync();
+                var user = _user.FindByIdAsync(userid).Result;
+                user.PhoneNumber = userProfileViewModel.user.PhoneNumber;
+                user.street = userProfileViewModel.user.street;
+                user.state = userProfileViewModel.user.state;
+                user.city = userProfileViewModel.user.city;
+                user.postcode = userProfileViewModel.user.postcode;
 
-            await _user.UpdateAsync(user);
+                await _user.UpdateAsync(user);
+            }            
             
             return View("UserProfile", userProfileViewModel);
         }
